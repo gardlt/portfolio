@@ -24,7 +24,7 @@ params:
   socials:
     # todo: change these links.
     - icon: 'far fa-envelope fa-lg'
-      url: 'mailto:eternity@bora.sh'
+      url: 'mailto:potatotraveler@gmail.com'
       landing: true
     - icon: 'fab fa-instagram fa-lg'
       url: 'https://www.instagram.com/potato.traveler/'
@@ -33,7 +33,7 @@ params:
   specialPages:
     - work
     - archive
-  bypassWelcomePage: false # redirects "/" to "homepage" when it's true.
+  bypassWelcomePage: true # redirects "/" to "homepage" when it's true.
   plausible: '' # todo: set your plausible id.
   disableRadius: false
   moveIt: false  # Moves Title and Meta info down, only visible when scroll.
