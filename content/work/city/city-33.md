@@ -2,9 +2,10 @@
 weight: 1
 images:
 - /images/city/33.jpg
-title: cookies
+title: Ferris Wheel
 date: 2022-07-23
 tags:
 - work
 - city
+- Seattle
 ---
