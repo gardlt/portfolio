@@ -1,4 +1,4 @@
 ---
 desc:
-- Welcome
+- Hello, Welcome to the Potato Traveler's Portfolio
 ---

@@ -5,10 +5,11 @@ theme: eternity
 googleAnalytics: '' # todo: set your analytics id.
 
 params:
-  image: /images/banner.png
+  image: /images/people/3.jpg
+  logo: logo.png # todo: add your custom logo to static/
   subtitle: Traveling is exploring. # todo: change default subtitle for your website.
   copyright: All rights reserved. # todo: set your copyright type.
-  author: Potato Traveler # todo: set your full name.
+  author: German Rivera De La Torre # todo: set your full name.
   dontShowSource: false # please, do not do this :)
   portfolio:
     columns:
@@ -29,14 +30,18 @@ params:
     - icon: 'fab fa-instagram fa-lg'
       url: 'https://www.instagram.com/potato.traveler/'
       landing: true
+    - icon: 'fab fa-unsplash fa-lg'
+      url: 'https://unsplash.com/@potato_traveler'
+      landing: true
   homepage: "/work" # homepage link, mostly same with menu.main[0]
   specialPages:
     - work
     - archive
-  bypassWelcomePage: true # redirects "/" to "homepage" when it's true.
+  bypassWelcomePage: false # redirects "/" to "homepage" when it's true.
   plausible: '' # todo: set your plausible id.
+  disableWelcomePageBackground: false # disables the background image on the homepage
   disableRadius: false
-  moveIt: false  # Moves Title and Meta info down, only visible when scroll.
+  moveIt: false # Moves Title and Meta info down, only visible when scroll.
   disableAlwaysResize: false
 
 markup:

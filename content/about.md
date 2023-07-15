@@ -8,11 +8,14 @@ hideExif: true
 hideDate: true
 ---
 
-<div align="center">
+<div align="left">
 	<p>
-        Welcome to the Potato Travelers Portfolio. Where we want to show some of the photos from our adventures.
+        Welcome to my portfolio. I am a novice Photographer and Videographer.
+		I am trying to capture my traveling adventures and be creative along the way
 	</p>
 </div>
+
+<img src="/people/4.jpg"/>
 
 ### Creators
 
