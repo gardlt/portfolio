@@ -61,21 +61,12 @@ menu:
     - name: work
       url: /work/
       weight: 1
-    # - name: people
-    #   url: /tags/people/
-    #   weight: 2
-    # - name: nature
-    #   url: /tags/nature/
-    #   weight: 3
-    # - name: food
-    #   url: /tags/food/
-    #   weight: 4
-    # - name: animals
-    #   url: /tags/animals/
-    #   weight: 5
-    # - name: city
-    #   url: /tags/city/
-    #   weight: 6
+    - name: food
+      url: /tags/food/
+      weight: 4
+    - name: city
+      url: /tags/city/
+      weight: 6
     - name: about
       url: /about/
       weight: 7
