@@ -3,12 +3,12 @@ import os
 import jinja2
 import datetime
 from PIL import Image
+from datetime import datetime
 
 postfix = ['jpeg', 'jpg']
 
 environment = jinja2.Environment()
-template = environment.from_string("""
----
+template = environment.from_string("""---
 weight: 1
 images:
 - /images/edited/{{number}}.jpeg
@@ -38,7 +38,10 @@ def get_date_taken(path):
     exif = Image.open(path)._getexif()
     if not exif:
         raise Exception('Image {0} does not have EXIF data.'.format(path))
-    return exif[36867]
+    
+    date_str = exif[36867]
+    date_format = '%Y:%m:%d %H:%M:%S'
+    return datetime.strptime(date_str, date_format)
 
 
 if __name__ == "__main__":
@@ -48,19 +51,17 @@ if __name__ == "__main__":
     list_of_pictures = get_list_of_files(image_path, image=True)
     new_list_of_pictures = list_of_pictures - list_of_mds
     highest_number = max([int(x) for x in list_of_mds])
-    print(highest_number, new_list_of_pictures )
-    for image in sorted(new_list_of_pictures):
-        print(image)
-        if os.path.isfile(f"{image_path}/{image}.jpg"):
+    print(new_list_of_pictures)
+    for image in sorted(list_of_pictures):
+        if os.path.isfile(f"{image_path}/{image}.jpeg"):
             highest_number = highest_number+1
-            print(image, highest_number)
-            old_image_name = f"{image_path}/{image}.jpg"
-            new_image_name = f"{image_path}/{highest_number}.jpg"
-            new_md_file = template.render(number=highest_number, date=get_date_taken(old_image_name))
-            print(template.render(number=highest_number, date=datetime.datetime.now()))
-            with open(f"{md_path}/edited-{highest_number}.md", 'w') as f:
+            old_image_name = f"{image_path}/{image}.jpeg"
+            # new_image_name = f"{image_path}/{highest_number}.jpeg"
+            new_md_file = template.render(number=image, date=get_date_taken(old_image_name))
+            print(image, old_image_name)
+            with open(f"{md_path}/edited-{image}.md", 'w') as f:
                 f.write(new_md_file)
-            os.rename(old_image_name, new_image_name)
+            # os.rename(old_image_name, new_image_name)
 
 
     # Get a list of pictures

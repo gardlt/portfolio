@@ -1,10 +1,9 @@
-
 ---
 weight: 1
 images:
 - /images/edited/55.jpeg
 title: Picture
-date: 2023-12-17 20:34:59.738820
+date: 2023-12-07 22:09:52
 tags:
 - luminar
 - work
