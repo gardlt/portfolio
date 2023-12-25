@@ -3,7 +3,7 @@ weight: 1
 images:
 - /images/edited/24.jpeg
 title: Picture
-date: 2023-05-02 15:22:12
+date: 2023-11-11 14:03:37
 tags:
 - luminar
 - work
