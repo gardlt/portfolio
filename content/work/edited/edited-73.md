@@ -4,7 +4,5 @@ images:
 - /images/edited/73.jpeg
 title: Picture
 date: 2022-10-24 22:59:53
-tags:
-- luminar
-- work
+tags: [luminar neo,work,cellphone]
 ---

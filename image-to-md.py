@@ -8,6 +8,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
+from ultralytics import YOLO
+
+
+model = YOLO(model='yolov8n.pt')
+#results = model.train(data='./config/coco.yaml', epochs=100, imgsz=640)
+
 postfix = ['jpeg', 'jpg']
 
 environment = jinja2.Environment()
@@ -17,9 +23,7 @@ images:
 - /images/edited/{{number}}.jpeg
 title: Picture
 date: {{date}}
-tags:
-- luminar
-- work
+tags: [{{tags}}]
 ---
 """)
 
@@ -83,20 +87,21 @@ if __name__ == "__main__":
 
     highest_number = len(intersect_between)
 
-    print("List of MDs", len(list_of_mds))
-    print("List of Intersect", len(intersect_between))
-
-    print("Number of pictures", len(list_of_pictures))
-
-    print("Difference", len(diff_between))
-    print(list_of_pictures)
-
     for image in sorted(list_of_pictures):
         old_image_name = f"{image_path}/{image}.jpeg"
         md_file = f"{md_path}/edited-{image}.md"
+        tags = ["luminar neo", "work"]
+        results = model(old_image_name)
+        for result in results:
+            for obj in result.boxes.cpu().numpy().cls:
+                tag = str(result.names[int(obj)]).replace(" ", "")
+                print(tag)
+                if tag not in tags:
+                    tags.append(tag)
+
         if os.path.isfile(old_image_name) and os.path.isfile(md_file):
             new_image_name = f"{image_path}/{highest_number}.jpeg"
-            new_md_file = template.render(number=image, date=get_date_taken(new_image_name))
+            new_md_file = template.render(number=image, tags=",".join(tags), date=get_date_taken(new_image_name))
             with open(md_file, 'w') as f:
                 f.write(new_md_file)
         else:
@@ -107,4 +112,3 @@ if __name__ == "__main__":
             new_md_file = template.render(number=highest_number, date=get_date_taken(new_image_name))
             with open(md_file, 'w') as f:
                 f.write(new_md_file)
-            
