@@ -94,21 +94,17 @@ if __name__ == "__main__":
     for image in sorted(list_of_pictures):
         old_image_name = f"{image_path}/{image}.jpeg"
         md_file = f"{md_path}/edited-{image}.md"
-        print(old_image_name, md_file)
         if os.path.isfile(old_image_name) and os.path.isfile(md_file):
-            print("picture and md exist")
             new_image_name = f"{image_path}/{highest_number}.jpeg"
             new_md_file = template.render(number=image, date=get_date_taken(new_image_name))
             with open(md_file, 'w') as f:
                 f.write(new_md_file)
         else:
-            print("picture does not exist with md")
             highest_number = highest_number+1
             new_image_name = f"{image_path}/{highest_number}.jpeg"
             md_file = f"{md_path}/edited-{highest_number}.md"
-            print(old_image_name)
-            # os.rename(old_image_name, new_image_name)
-            new_md_file = template.render(number=image, date=get_date_taken(new_image_name))
+            os.rename(old_image_name, new_image_name)
+            new_md_file = template.render(number=highest_number, date=get_date_taken(new_image_name))
             with open(md_file, 'w') as f:
                 f.write(new_md_file)
             
