@@ -3,6 +3,6 @@ weight: 1
 images:
 - /images/edited/131.jpeg
 title: Picture
-date: 2022-10-24 22:59:53
+date: 2023-12-01 12:11:50
 tags: [luminar neo,work,dog,person,cellphone,chair]
 ---

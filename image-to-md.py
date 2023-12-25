@@ -4,8 +4,6 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 import jinja2
-import matplotlib.pyplot as plt
-import numpy as np
 import os
 
 from ultralytics import YOLO
@@ -48,6 +46,7 @@ def get_date_taken(path):
     
     date_str = exif[36867]
     date_format = '%Y:%m:%d %H:%M:%S'
+    print(datetime.strptime(date_str, date_format))
     return datetime.strptime(date_str, date_format)
 
 def add_watermark(imagePath: str):
@@ -84,7 +83,6 @@ if __name__ == "__main__":
     diff_between = list_of_pictures - list_of_mds
     intersect_between = list_of_pictures.intersection(list_of_mds)
     highest_number_md = max([int(x) for x in list_of_mds])
-
     highest_number = len(intersect_between)
 
     for image in sorted(list_of_pictures):
@@ -95,20 +93,22 @@ if __name__ == "__main__":
         for result in results:
             for obj in result.boxes.cpu().numpy().cls:
                 tag = str(result.names[int(obj)]).replace(" ", "")
-                print(tag)
                 if tag not in tags:
                     tags.append(tag)
 
+        image_created_date = get_date_taken(old_image_name)
+
         if os.path.isfile(old_image_name) and os.path.isfile(md_file):
             new_image_name = f"{image_path}/{highest_number}.jpeg"
-            new_md_file = template.render(number=image, tags=",".join(tags), date=get_date_taken(new_image_name))
+            new_md_file = template.render(number=image, tags=",".join(tags), date=image_created_date)
             with open(md_file, 'w') as f:
                 f.write(new_md_file)
         else:
+            print("Creating a new Image")
             highest_number = highest_number+1
             new_image_name = f"{image_path}/{highest_number}.jpeg"
             md_file = f"{md_path}/edited-{highest_number}.md"
             os.rename(old_image_name, new_image_name)
-            new_md_file = template.render(number=highest_number, date=get_date_taken(new_image_name))
+            new_md_file = template.render(number=highest_number, date=image_created_date)
             with open(md_file, 'w') as f:
                 f.write(new_md_file)

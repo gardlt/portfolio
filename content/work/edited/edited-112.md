@@ -3,6 +3,6 @@ weight: 1
 images:
 - /images/edited/112.jpeg
 title: Picture
-date: 2022-10-24 22:59:53
+date: 2023-04-05 15:57:19
 tags: [luminar neo,work,person]
 ---
