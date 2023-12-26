@@ -39,14 +39,21 @@ def get_list_of_files(path: str, image: bool = False):
                 f.add(get_the_number(file, image))
     return f
 
+def get_image_tags(path):
+    exif = Image.open(path)._getexif()
+    if not exif:
+        raise Exception('Image {0} does not have EXIF data.'.format(path))
+
+    tags_exif = [42036, 272, 37386]
+    return list(map(lambda code: str(exif.get(code, "")), tags_exif))
+
 def get_date_taken(path):
     exif = Image.open(path)._getexif()
     if not exif:
         raise Exception('Image {0} does not have EXIF data.'.format(path))
-    
+
     date_str = exif[36867]
     date_format = '%Y:%m:%d %H:%M:%S'
-    print(datetime.strptime(date_str, date_format))
     return datetime.strptime(date_str, date_format)
 
 def add_watermark(imagePath: str):
@@ -89,7 +96,10 @@ if __name__ == "__main__":
         old_image_name = f"{image_path}/{image}.jpeg"
         md_file = f"{md_path}/edited-{image}.md"
         tags = ["luminar neo", "work"]
+
+        tags.extend(get_image_tags(old_image_name))
         results = model(old_image_name)
+        print(tags)
         for result in results:
             for obj in result.boxes.cpu().numpy().cls:
                 tag = str(result.names[int(obj)]).replace(" ", "")

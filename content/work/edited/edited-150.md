@@ -4,5 +4,5 @@ images:
 - /images/edited/150.jpeg
 title: Picture
 date: 2022-10-24 20:23:07
-tags: [luminar neo,work,bird,person]
+tags: [luminar neo,work,FE 28-70mm F3.5-5.6 OSS,ILCE-7M3,70.0,bird,person]
 ---

@@ -4,5 +4,5 @@ images:
 - /images/edited/203.jpeg
 title: Picture
 date: 2023-11-12 16:51:59
-tags: [luminar neo,work,motorcycle]
+tags: [luminar neo,work,24-70mm F2.8 DG DN | Art 019,ILCE-7M3,24.0,motorcycle]
 ---
