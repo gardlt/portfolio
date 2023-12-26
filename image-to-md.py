@@ -43,9 +43,9 @@ def get_image_tags(path):
     exif = Image.open(path)._getexif()
     if not exif:
         raise Exception('Image {0} does not have EXIF data.'.format(path))
-
-    tags_exif = [42036, 272, 37386]
-    return list(map(lambda code: str(exif.get(code, "unknown")), tags_exif))
+    # lens information
+    tags_exif = [272, 37386]
+    return list(map(lambda code: str(exif.get(code, "unknown")).replace(" ", ""), tags_exif))
 
 def get_date_taken(path):
     exif = Image.open(path)._getexif()
@@ -78,7 +78,6 @@ def add_watermark(imagePath: str):
 
 def findMissingNumbers(n):
     numbers = set(n)
-    length = len(n)
     output = []
     for i in range(1, n[-1]):
         if i not in numbers:
@@ -107,7 +106,7 @@ if __name__ == "__main__":
     for image in sorted(list_of_pictures):
         old_image_name = f"{image_path}/{image}.jpeg"
         md_file = f"{md_path}/edited-{image}.md"
-        tags = ["luminar neo", "work"]
+        tags = ["luminarneo", "work"]
 
         tags.extend(get_image_tags(old_image_name))
         results = model(old_image_name)

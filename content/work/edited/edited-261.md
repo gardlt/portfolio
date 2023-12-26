@@ -4,5 +4,5 @@ images:
 - /images/edited/261.jpeg
 title: Picture
 date: 2022-08-21 22:11:03
-tags: [luminar neo,work,----,ILCE-7M3,0.0]
+tags: [luminarneo,work,ILCE-7M3,0.0]
 ---

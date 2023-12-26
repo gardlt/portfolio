@@ -4,5 +4,5 @@ images:
 - /images/edited/11.jpeg
 title: Picture
 date: 2022-06-12 05:45:17
-tags: [luminar neo,work,FE 28-70mm F3.5-5.6 OSS,ILCE-7M3,48.0]
+tags: [luminarneo,work,ILCE-7M3,48.0]
 ---
