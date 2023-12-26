@@ -1,8 +1,0 @@
----
-weight: 1
-images:
-- /images/edited/69.jpeg
-title: Picture
-date: 2023-12-07 22:11:39
-tags: [luminar neo,work]
----
