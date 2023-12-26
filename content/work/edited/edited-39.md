@@ -4,5 +4,5 @@ images:
 - /images/edited/39.jpeg
 title: Picture
 date: 2023-05-04 18:13:43
-tags: [luminar neo,work,,Pixel 7 Pro,1.95]
+tags: [luminar neo,work,unknown,Pixel 7 Pro,1.95]
 ---

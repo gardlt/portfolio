@@ -45,7 +45,7 @@ def get_image_tags(path):
         raise Exception('Image {0} does not have EXIF data.'.format(path))
 
     tags_exif = [42036, 272, 37386]
-    return list(map(lambda code: str(exif.get(code, "")), tags_exif))
+    return list(map(lambda code: str(exif.get(code, "unknown")), tags_exif))
 
 def get_date_taken(path):
     exif = Image.open(path)._getexif()
@@ -76,6 +76,15 @@ def add_watermark(imagePath: str):
     draw.text((x, y), "German Alexis Rivera De La Torre Photos", fill=(255, 255, 255, 128), font=font, anchor='ms')
     image.save(imagePath, exif=exif)
 
+def findMissingNumbers(n):
+    numbers = set(n)
+    length = len(n)
+    output = []
+    for i in range(1, n[-1]):
+        if i not in numbers:
+            output.append(i)
+    return output
+
 
 # Get a list of pictures
 # check if there is an image associated to a MD file
@@ -88,10 +97,13 @@ if __name__ == "__main__":
     list_of_mds = get_list_of_files(md_path)
     list_of_pictures = get_list_of_files(image_path, image=True)
     diff_between = list_of_pictures - list_of_mds
+    print(diff_between)
     intersect_between = list_of_pictures.intersection(list_of_mds)
-    highest_number_md = max([int(x) for x in list_of_mds])
     highest_number = len(intersect_between)
+    missing_numbers = findMissingNumbers([int(x) for x in list_of_mds])
+    print(missing_numbers) # if numbers are missing then we will use the missing number before the highest number
 
+    print(highest_number)
     for image in sorted(list_of_pictures):
         old_image_name = f"{image_path}/{image}.jpeg"
         md_file = f"{md_path}/edited-{image}.md"
@@ -99,7 +111,6 @@ if __name__ == "__main__":
 
         tags.extend(get_image_tags(old_image_name))
         results = model(old_image_name)
-        print(tags)
         for result in results:
             for obj in result.boxes.cpu().numpy().cls:
                 tag = str(result.names[int(obj)]).replace(" ", "")
@@ -108,7 +119,7 @@ if __name__ == "__main__":
 
         image_created_date = get_date_taken(old_image_name)
 
-        if os.path.isfile(old_image_name) and os.path.isfile(md_file):
+        if (os.path.isfile(old_image_name) and os.path.isfile(md_file)):
             new_image_name = f"{image_path}/{highest_number}.jpeg"
             new_md_file = template.render(number=image, tags=",".join(tags), date=image_created_date)
             with open(md_file, 'w') as f:
