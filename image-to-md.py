@@ -45,7 +45,7 @@ def get_image_tags(path):
         raise Exception('Image {0} does not have EXIF data.'.format(path))
     # lens information
     tags_exif = [272, 37386]
-    return list(map(lambda code: str(exif.get(code, "unknown")).replace(" ", ""), tags_exif))
+    return list(map(lambda code: str(exif.get(code, "unknown")).replace(" ", "").replace("-", ""), tags_exif))
 
 def get_date_taken(path):
     exif = Image.open(path)._getexif()
@@ -96,7 +96,6 @@ if __name__ == "__main__":
     list_of_mds = get_list_of_files(md_path)
     list_of_pictures = get_list_of_files(image_path, image=True)
     diff_between = list_of_pictures - list_of_mds
-    print(diff_between)
     intersect_between = list_of_pictures.intersection(list_of_mds)
     highest_number = len(intersect_between)
     missing_numbers = findMissingNumbers([int(x) for x in list_of_mds])

@@ -4,5 +4,5 @@ images:
 - /images/edited/34.jpeg
 title: Picture
 date: 2022-04-19 05:46:32
-tags: [luminarneo,work,ILCE-7M3,300.0,sportsball]
+tags: [luminarneo,work,ILCE7M3,300.0,sportsball]
 ---

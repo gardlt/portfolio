@@ -4,5 +4,5 @@ images:
 - /images/edited/145.jpeg
 title: Picture
 date: 2022-10-24 20:13:50
-tags: [luminarneo,work,ILCE-7M3,28.0,person,pottedplant,vase]
+tags: [luminarneo,work,ILCE7M3,28.0,person,pottedplant,vase]
 ---

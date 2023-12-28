@@ -4,5 +4,5 @@ images:
 - /images/edited/73.jpeg
 title: Picture
 date: 2023-10-27 09:32:48
-tags: [luminarneo,work,ILCE-7M3,24.0,truck]
+tags: [luminarneo,work,ILCE7M3,24.0,truck]
 ---
