@@ -4,5 +4,5 @@ images:
 - /images/edited/184.jpeg
 title: Picture
 date: 2023-11-11 14:40:13
-tags: [luminarneo,work,ILCE7M3,25.1,laptop,person,cellphone]
+tags: [luminarneo,work,ilce7m3,laptop,person,cellphone]
 ---

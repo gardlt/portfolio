@@ -4,5 +4,5 @@ images:
 - /images/edited/242.jpeg
 title: Picture
 date: 2023-10-27 14:47:54
-tags: [luminarneo,work,ILCE7M3,52.7,bird]
+tags: [luminarneo,work,ilce7m3,bird]
 ---

@@ -44,8 +44,8 @@ def get_image_tags(path):
     if not exif:
         raise Exception('Image {0} does not have EXIF data.'.format(path))
     # lens information
-    tags_exif = [272, 37386]
-    return list(map(lambda code: str(exif.get(code, "unknown")).replace(" ", "").replace("-", ""), tags_exif))
+    tags_exif = [272]
+    return list(map(lambda code: str(exif.get(code, "unknown")).replace(" ", "").replace("-", "").replace(".", "").lower(), tags_exif))
 
 def get_date_taken(path):
     exif = Image.open(path)._getexif()
@@ -101,7 +101,6 @@ if __name__ == "__main__":
     missing_numbers = findMissingNumbers([int(x) for x in list_of_mds])
     print(missing_numbers) # if numbers are missing then we will use the missing number before the highest number
 
-    print(highest_number)
     for image in sorted(list_of_pictures):
         old_image_name = f"{image_path}/{image}.jpeg"
         md_file = f"{md_path}/edited-{image}.md"

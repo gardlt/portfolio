@@ -4,5 +4,5 @@ images:
 - /images/edited/210.jpeg
 title: Picture
 date: 2023-11-11 12:04:16
-tags: [luminarneo,work,ILCE7M3,25.4,person,car,trafficlight]
+tags: [luminarneo,work,ilce7m3,person,car,trafficlight]
 ---

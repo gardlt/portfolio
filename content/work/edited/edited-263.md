@@ -4,5 +4,5 @@ images:
 - /images/edited/263.jpeg
 title: Picture
 date: 2022-10-15 16:00:51
-tags: [luminarneo,work,ILCE7M3,300.0,orange,frisbee]
+tags: [luminarneo,work,ilce7m3,orange,frisbee]
 ---

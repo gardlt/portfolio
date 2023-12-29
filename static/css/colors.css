@@ -1,9 +1,9 @@
 :root {
     --main: #2069cf;
     --main-light: #5b8fd8d8;
-    --dark: #000;
+    --dark: #fff;
     --dark-light: #101010;
-    --white: #fff;
-    --grey-light: #f7f5f3;
+    --white: #000;
+    --grey-light: #000;
     --pink: #cf2069;
 }

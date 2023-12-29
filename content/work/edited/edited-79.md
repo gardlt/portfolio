@@ -4,5 +4,5 @@ images:
 - /images/edited/79.jpeg
 title: Picture
 date: 2023-12-07 22:13:33
-tags: [luminarneo,work,ILCE7M3,24.0]
+tags: [luminarneo,work,ilce7m3]
 ---

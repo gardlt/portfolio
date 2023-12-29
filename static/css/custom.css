@@ -1,1 +1,9 @@
 /* Custom CSS styles */
+
+.footer {
+    color: #000;
+}
+
+h2 {
+    color: #000 !important;
+}

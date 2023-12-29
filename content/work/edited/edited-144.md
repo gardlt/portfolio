@@ -4,5 +4,5 @@ images:
 - /images/edited/144.jpeg
 title: Picture
 date: 2022-10-24 20:08:09
-tags: [luminarneo,work,ILCE7M3,59.0,person]
+tags: [luminarneo,work,ilce7m3,person]
 ---

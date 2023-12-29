@@ -4,5 +4,5 @@ images:
 - /images/edited/111.jpeg
 title: Picture
 date: 2019-09-07 16:03:09
-tags: [luminarneo,work,Pixel3XL,4.440000057221823,car]
+tags: [luminarneo,work,pixel3xl,car]
 ---
