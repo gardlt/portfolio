@@ -1,3 +1,7 @@
 :root {
     --desktop-work-width: 80%;
 }
+
+a.grey {
+    color: white;
+}

@@ -5,25 +5,24 @@ theme: eternity
 googleAnalytics: 'G-D9ZZYHF9QV' # todo: set your analytics id.
 
 params:
-  image: /images/people/3.jpg
-  logo: logo.png # todo: add your custom logo to static/
+  image: /images/banner.png
+  logo:  /images/logo.png # todo: add your custom logo to static/
   subtitle: Traveling is exploring. # todo: change default subtitle for your website.
   copyright: All rights reserved. # todo: set your copyright type.
   author: German Rivera De La Torre # todo: set your full name.
   dontShowSource: false # please, do not do this :)
+  dontShowLogo: true # If you want to hide the logo, this is what you set to true
   portfolio:
     columns:
       desktop:
-        nature: 4
-        archive: 6
-        people: 2
         default: 3
       mobile:
         default: 2
-        archive: 3
-        people: 1
   socials:
     # todo: change these links.
+    - icon: 'fa fa-mug-hot fa-lg'
+      url: 'https://ko-fi.com/potatotraveler'
+      landing: true
     - icon: 'far fa-envelope fa-lg'
       url: 'mailto:potatotraveler@gmail.com'
       landing: true
@@ -36,7 +35,8 @@ params:
   homepage: "/work" # homepage link, mostly same with menu.main[0]
   specialPages:
     - work
-  bypassWelcomePage: false # redirects "/" to "homepage" when it's true.
+    - archive
+  bypassWelcomePage: true # redirects "/" to "homepage" when it's true.
   plausible: '' # todo: set your plausible id.
   disableWelcomePageBackground: false # disables the background image on the homepage
   disableRadius: false
