@@ -4,5 +4,5 @@ images:
 - /images/edited/33.jpeg
 title: Picture
 date: 2022-05-16 09:30:56
-tags: [luminarneo,work,ilce7m3,person,bottle,knife]
+tags: [luminarneo,work,ilce7m3,person,people,bottle]
 ---

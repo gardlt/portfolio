@@ -4,5 +4,5 @@ images:
 - /images/edited/27.jpeg
 title: Picture
 date: 2022-09-27 12:33:25
-tags: [luminarneo,work,dmcg7,boat]
+tags: [luminarneo,work,dmcg7]
 ---

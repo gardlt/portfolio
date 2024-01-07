@@ -60,6 +60,15 @@ menu:
     - name: work
       url: /work/
       weight: 1
+    - name: vehicles
+      url: /tags/vehicles/
+      weight: 2
+    - name: person
+      url: /tags/person/
+      weight: 3
+    - name: animals
+      url: /tags/animals/
+      weight: 3
     - name: about
       url: /about/
-      weight: 2
+      weight: 4

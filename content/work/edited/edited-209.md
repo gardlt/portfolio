@@ -4,5 +4,5 @@ images:
 - /images/edited/209.jpeg
 title: Picture
 date: 2023-10-20 12:51:33
-tags: [luminarneo,work,ilce7m3,dog]
+tags: [luminarneo,work,ilce7m3,dog,animals]
 ---

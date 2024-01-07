@@ -1,10 +1,12 @@
 from datetime import datetime
+import itertools
 from os import walk
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 import jinja2
 import os
+import json
 
 from ultralytics import YOLO
 
@@ -24,6 +26,26 @@ date: {{date}}
 tags: [{{tags}}]
 ---
 """)
+
+# TODO: We need to get the optimal hash tags
+
+
+# TODO: we need to set more tags to base images since the AI can only detect object not events?ffff
+# NOTE: IF we know the date event we can send general tags
+
+dates_make_folders = {
+    '2022-05-16': ['something']
+}
+
+parent_tags = {
+    'vehicles': ['car', 'truck', 'train', 'bicycle', 'boat', 'motorcycle', 'skateboard'],
+    'animals': ['dog', 'cat', 'bird', 'elephant', 'sheep', 'cow', 'horse', 'giraffe', 'bear'],
+    'people': ['person'],
+    'food': ['donut', 'cake', 'broccoli'],
+}
+
+#NOTE: car/truck -> vehicles
+#NOTE: dog/cat/horse/truck/kangaroo -> animals
 
 def get_the_number(filname: str, image: bool = False):
     if image:
@@ -99,7 +121,9 @@ if __name__ == "__main__":
     intersect_between = list_of_pictures.intersection(list_of_mds)
     highest_number = len(intersect_between)
     missing_numbers = findMissingNumbers([int(x) for x in list_of_mds])
-    print(missing_numbers) # if numbers are missing then we will use the missing number before the highest number
+    print(f"Missing Numbers {missing_numbers}") # if numbers are missing then we will use the missing number before the highest number
+
+    global_tags = {}
 
     for image in sorted(list_of_pictures):
         old_image_name = f"{image_path}/{image}.jpeg"
@@ -109,10 +133,26 @@ if __name__ == "__main__":
         tags.extend(get_image_tags(old_image_name))
         results = model(old_image_name)
         for result in results:
-            for obj in result.boxes.cpu().numpy().cls:
+            for (obj, confidence) in itertools.zip_longest(result.boxes.cpu().numpy().cls, result.boxes.cpu().numpy().conf):
                 tag = str(result.names[int(obj)]).replace(" ", "")
-                if tag not in tags:
-                    tags.append(tag)
+
+                print(f"{tag}: {confidence}")
+                if confidence > .70:
+                    if global_tags.get(tag, None) is None:
+                        global_tags[tag] = {
+                            "images": [image],
+                            "count": 1
+                        }
+                    else:
+                        global_tags[tag]["images"].append(image)
+                        global_tags[tag]["count"] = 1 + global_tags[tag]["count"]
+
+                    if tag not in tags:
+                        tags.append(tag)
+                        for key in parent_tags.keys():
+                            if tag in parent_tags[key]:
+                                tags.append(key)
+                        # append the extras heres
 
         image_created_date = get_date_taken(old_image_name)
 
@@ -130,3 +170,6 @@ if __name__ == "__main__":
             new_md_file = template.render(number=highest_number, date=image_created_date)
             with open(md_file, 'w') as f:
                 f.write(new_md_file)
+        
+    with open('global_tags.json', "w") as outfile: 
+        json.dump(global_tags, outfile)

@@ -4,5 +4,5 @@ images:
 - /images/edited/222.jpeg
 title: Picture
 date: 2022-09-11 23:08:40
-tags: [luminarneo,work,ilce7m3,person,bed,cellphone]
+tags: [luminarneo,work,ilce7m3]
 ---
