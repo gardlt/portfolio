@@ -7,7 +7,6 @@ from PIL import ImageFont
 import jinja2
 import os
 import json
-
 from ultralytics import YOLO
 
 
@@ -46,7 +45,6 @@ parent_tags = {
 
 #NOTE: car/truck -> vehicles
 #NOTE: dog/cat/horse/truck/kangaroo -> animals
-
 def get_the_number(filname: str, image: bool = False):
     if image:
         return filname.split(".")[0]
